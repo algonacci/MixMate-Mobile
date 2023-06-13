@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 
 class RecommendationPage extends StatefulWidget {
   @override
@@ -105,11 +106,13 @@ class _RecommendationPageState extends State<RecommendationPage> {
                 ],
               ),
               SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: _isFetching ? null : sendImage,
-                child: _isFetching
-                    ? CircularProgressIndicator()
-                    : Text('Recommend'),
+              Center(
+                child: ElevatedButton(
+                  onPressed: _isFetching ? null : sendImage,
+                  child: _isFetching
+                      ? CircularProgressIndicator()
+                      : Text('Recommend'),
+                ),
               ),
               SizedBox(height: 16),
               if (_gender != null || _race != null || _style != null)
@@ -190,7 +193,7 @@ class _RecommendationPageState extends State<RecommendationPage> {
                                 ),
                                 SizedBox(height: 4),
                                 Text(
-                                  'Price: ${outfit['price']}',
+                                  'Price: ${NumberFormat.currency(locale: 'id_ID', symbol: 'Rp').format(int.parse(outfit['price']))}',
                                   style: TextStyle(fontSize: 14),
                                 ),
                               ],

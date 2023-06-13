@@ -68,7 +68,7 @@ class _ExplorePageState extends State<ExplorePage> {
                       children: [
                         Expanded(
                           child: Image.network(
-                            item['gambar'],
+                            'https://storage.googleapis.com/mixmate/${item['gambar']}',
                             fit: BoxFit.cover,
                             width: double.infinity,
                             height: double.infinity,
